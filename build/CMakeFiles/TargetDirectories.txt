@@ -1,0 +1,3 @@
+/Users/tymalik/Docs/Git/construct/c_construct/build/CMakeFiles/c_construct.dir
+/Users/tymalik/Docs/Git/construct/c_construct/build/CMakeFiles/edit_cache.dir
+/Users/tymalik/Docs/Git/construct/c_construct/build/CMakeFiles/rebuild_cache.dir
