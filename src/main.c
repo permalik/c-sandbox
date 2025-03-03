@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <stdio.h>
 
 struct Files {
@@ -19,6 +20,13 @@ int main() {
         "forty_one.txt", "forty_two.txt", "forty_three.txt", "forty_four.txt", "forty_five.txt",
         "forty_six.txt", "forty_seven.txt", "forty_eight.txt", "forty_nine.txt", "fifty.txt"
     };
+
+    int filenames_length = sizeof(filenames) / sizeof(filenames[0]);
+    assert(filenames_length > 0 && "filenames cannot be empty");
+
+    for (int i = 0; i < filenames_length; i++) {
+        printf("%s\n", filenames[i]);
+    }
 
     // TODO: assert inputFiles is not empty
     // TODO: remove stale dirs
