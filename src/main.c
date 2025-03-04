@@ -1,6 +1,6 @@
-#include <_time.h>
 #include <assert.h>
 #include <errno.h>
+#include <ftw.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -28,11 +28,25 @@ int random_number_string(char* buffer) {
     return 0;
 }
 
+int unlink_callback(const char* file_path, const struct stat* stat_info, int typeflag, struct FTW* ftwbuffer) {
+    if (typeflag == FTW_DP) {
+        return rmdir(file_path);
+    }
+    return unlink(file_path);
+}
+
+int rimraf(const char* dir_path) {
+    return nftw(dir_path, unlink_callback, 50, FTW_DEPTH | FTW_PHYS);
+}
+
 int init_directory(const char** dir_path) {
     struct stat s;
     if (stat(*dir_path, &s) == 0) {
         if (S_ISDIR(s.st_mode)) {
-            rmdir(*dir_path);
+            if (rimraf(*dir_path) != 0) {
+                perror("Error recursively removing directory.\n");
+                return 0;
+            }
             mkdir(*dir_path, 0755);
         } else {
             printf("Path exists but is not directory.\n");
@@ -58,7 +72,7 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
         localtime_r(&t, &tm_info);
         char timestamp[13];
         strftime(timestamp, sizeof(timestamp), "%Y%m%d%H%M", &tm_info);
-        size_t path_length = strlen(*dir_path) + strlen(timestamp) + strlen(source_file_names[i]);
+        size_t path_length = strlen(*dir_path) + strlen(timestamp) + strlen(source_file_names[i]) + 3;
 
         char* file_path = malloc(path_length);
         if (file_path == NULL) {
