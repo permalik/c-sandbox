@@ -89,10 +89,12 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
             continue;
         }
 
-        char random_number[10];
-        random_number_string(random_number);
-        fwrite(random_number, 1, 10, fp);
-        putchar('\n');
+        for (int j = 0; j < 100; j++) {
+            char random_number[11];
+            random_number_string(random_number);
+            fwrite(random_number, 1, 10, fp);
+            fwrite("\n", 1, 1, fp);
+        }
         rewind(fp);
 
         int c;
@@ -103,7 +105,7 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
         if (ferror(fp)) {
             puts("I/O error when reading.");
         } else if (feof(fp)) {
-            puts("End of file successfully reached.");
+            puts("End of file successfully reached.\n");
         }
 
         fclose(fp);
