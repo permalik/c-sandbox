@@ -1,15 +1,17 @@
 #include <assert.h>
 #include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <sys/stat.h>
 #include <sys/syslimits.h>
 #include <unistd.h>
 
 struct Files {
-    char *file;
+    char* file;
 };
 
-int init_directory(const char **dir_path) {
+int init_directory(const char** dir_path) {
     struct stat s;
     if (stat(*dir_path, &s) == 0) {
         if (S_ISDIR(s.st_mode)) {
@@ -30,22 +32,33 @@ int init_directory(const char **dir_path) {
     return 1;
 }
 
-int populate_source(const char **dir_path, const char *source_file_names[], int *filenames_length) {
-    for (int i = 0; i < *filenames_length; i++) {
-        printf("%s/%s\n", *dir_path, source_file_names[i]);
+int populate_source(const char** dir_path, const char* source_file_names[], int* file_names_length) {
+    for (int i = 0; i < *file_names_length; i++) {
+        size_t path_length = strlen(*dir_path) + strlen(source_file_names[i]);
+
+        char* file_path = malloc(path_length);
+        if (file_path == NULL) {
+            fprintf(stderr, "Memory allocation failure in populate_source.\n");
+            return 1;
+        }
+
+        snprintf(file_path, path_length, "%s/%s", *dir_path, source_file_names[i]);
+        printf("%s\n", file_path);
+
+        free(file_path);
     }
-    return 1;
+    return 0;
 }
 
 int main() {
-    const char *SOURCEDIRECTORY = "/Users/tymalik/Docs/Git/construct/c_construct/src/data";
-    const char *DESTDIRECTORY = "/Users/tymalik/Docs/Git/construct/c_construct/src/dest";
+    const char* SOURCEDIRECTORY = "/Users/tymalik/Docs/Git/construct/c_construct/src/data";
+    const char* DESTDIRECTORY = "/Users/tymalik/Docs/Git/construct/c_construct/src/dest";
     int is_source_initialized = init_directory(&SOURCEDIRECTORY);
     assert((is_source_initialized == 1) && "Source must be initialized.");
     int is_dest_initialized = init_directory(&DESTDIRECTORY);
     assert((is_dest_initialized == 1) && "Dest must be initialized.");
 
-    const char *filenames[] = {
+    const char* filenames[] = {
         "one.txt", "two.txt", "three.txt", "four.txt", "five.txt",
         "six.txt", "seven.txt", "eight.txt", "nine.txt", "ten.txt",
         "eleven.txt", "twelve.txt", "thirteen.txt", "fourteen.txt", "fifteen.txt",
