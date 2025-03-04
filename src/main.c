@@ -1,3 +1,4 @@
+#include <_time.h>
 #include <assert.h>
 #include <errno.h>
 #include <stdio.h>
@@ -5,6 +6,7 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <sys/syslimits.h>
+#include <time.h>
 #include <unistd.h>
 
 struct Files {
@@ -35,7 +37,12 @@ int init_directory(const char** dir_path) {
 int populate_source(const char** dir_path, const char* source_file_names[], int* file_names_length) {
     int is_ok = EXIT_SUCCESS;
     for (int i = 0; i < *file_names_length; i++) {
-        size_t path_length = strlen(*dir_path) + strlen(source_file_names[i]);
+        time_t t = time(NULL);
+        struct tm tm_info;
+        localtime_r(&t, &tm_info);
+        char timestamp[13];
+        strftime(timestamp, sizeof(timestamp), "%Y%m%d%H%M", &tm_info);
+        size_t path_length = strlen(*dir_path) + strlen(timestamp) + strlen(source_file_names[i]);
 
         char* file_path = malloc(path_length);
         if (file_path == NULL) {
@@ -44,7 +51,7 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
             continue;
         }
 
-        snprintf(file_path, path_length, "%s/%s", *dir_path, source_file_names[i]);
+        snprintf(file_path, path_length, "%s/%s.%s", *dir_path, timestamp, source_file_names[i]);
         FILE* fp = fopen(file_path, "w+");
         if (!fp) {
             perror("File opening failed.\n");
