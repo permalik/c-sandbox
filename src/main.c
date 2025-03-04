@@ -13,6 +13,22 @@ struct Files {
     char* file;
 };
 
+int random_number_string(char* buffer, size_t result_size) {
+    int dataset[] = {0,1,2,3,4,5,6,7,8,9};
+    int n = 10;
+
+    for (int i = 0; i < n; i++) {
+        int index = rand() % (n - i);
+        buffer[i] = '0' + dataset[index];
+
+        for (int j = index; j < n - i - 1; j++) {
+            dataset[j] = dataset[j + 1];
+        }
+    }
+    buffer[n] = '\0';
+    return 0;
+}
+
 int init_directory(const char** dir_path) {
     struct stat s;
     if (stat(*dir_path, &s) == 0) {
@@ -58,7 +74,14 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
             is_ok = EXIT_FAILURE;
             continue;
         }
-        fputs("test_string\n", fp);
+
+        srand(time(NULL));
+        char random_number[11];
+        random_number_string(random_number, sizeof(random_number));
+        char random_number_buffer[12];
+        size_t random_number_length = strlen(random_number_buffer) + strlen(newline);
+        snprintf(random_number_buffer, random_number_length, "%s\n", random_number);
+        fputs(random_number_buffer, fp);
         rewind(fp);
 
         int c;
