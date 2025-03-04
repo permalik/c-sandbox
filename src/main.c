@@ -1,5 +1,6 @@
 #include <assert.h>
 #include <errno.h>
+#include <dirent.h>
 #include <ftw.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -65,15 +66,8 @@ int init_directory(const char** dir_path) {
 
 int populate_source(const char** dir_path, const char* source_file_names[], int* file_names_length) {
     int is_ok = EXIT_SUCCESS;
-    srand(time(NULL));
     for (int i = 0; i < *file_names_length; i++) {
-        time_t t = time(NULL);
-        struct tm tm_info;
-        localtime_r(&t, &tm_info);
-        char timestamp[13];
-        strftime(timestamp, sizeof(timestamp), "%Y%m%d%H%M", &tm_info);
-        size_t path_length = strlen(*dir_path) + strlen(timestamp) + strlen(source_file_names[i]) + 3;
-
+        size_t path_length = strlen(*dir_path) + strlen(source_file_names[i]) + 2;
         char* file_path = malloc(path_length);
         if (file_path == NULL) {
             fprintf(stderr, "Error: Memory allocation failed for %s\n", source_file_names[i]);
@@ -81,7 +75,7 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
             continue;
         }
 
-        snprintf(file_path, path_length, "%s/%s.%s", *dir_path, timestamp, source_file_names[i]);
+        snprintf(file_path, path_length, "%s/%s", *dir_path, source_file_names[i]);
         FILE* fp = fopen(file_path, "w+");
         if (!fp) {
             perror("File opening failed.\n");
@@ -96,18 +90,6 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
             fwrite("\n", 1, 1, fp);
         }
         rewind(fp);
-
-        int c;
-        while ((c = fgetc(fp)) != EOF) {
-            putchar(c);
-        }
-
-        if (ferror(fp)) {
-            puts("I/O error when reading.");
-        } else if (feof(fp)) {
-            puts("End of file successfully reached.\n");
-        }
-
         fclose(fp);
         free(file_path);
     }
@@ -115,6 +97,37 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
     if (is_ok == EXIT_FAILURE) {
         fprintf(stderr, "Memory allocations failed.\n");
     }
+    return 0;
+}
+
+int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
+    // TODO: iterate source files
+    struct dirent* entry;
+    DIR* dir = opendir(*source_dir_path);
+    if (!dir) {
+        perror("Failed opendir.\n");
+        return 1;
+    }
+    srand(time(NULL));
+    while ((entry = readdir(dir)) != NULL) {
+        size_t path_length = strlen(*source_dir_path) + strlen(entry->d_name);
+        char* file_name = malloc(path_length);
+        snprintf(file_name, 15, "%s/%s", *source_dir_path, entry->d_name);
+        printf("%s\n", file_name);
+    }
+    time_t t = time(NULL);
+    struct tm tm_info;
+    localtime_r(&t, &tm_info);
+    char timestamp[13];
+    strftime(timestamp, sizeof(timestamp), "%Y%m%d%H%M", &tm_info);
+
+    // TODO: stat and assert files are non-empty
+    // TODO: iterate file lines
+    // TODO: read line to buffer
+    // TODO: add char to array, converting to int
+    // TODO: sort array
+    // TODO: convert int arr to chars
+    // TODO: write string from arr to dest file
     return 0;
 }
 
@@ -140,7 +153,9 @@ int main() {
     };
     int filenames_length = sizeof(filenames) / sizeof(filenames[0]);
     assert(filenames_length > 0 && "filenames cannot be empty");
+
     populate_source(&SOURCEDIRECTORY, filenames, &filenames_length);
+    sort_numbers(&SOURCEDIRECTORY, &DESTDIRECTORY);
 
     return 0;
 }
