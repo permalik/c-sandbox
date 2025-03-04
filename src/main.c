@@ -13,7 +13,7 @@ struct Files {
     char* file;
 };
 
-int random_number_string(char* buffer, size_t result_size) {
+int random_number_string(char* buffer) {
     int dataset[] = {0,1,2,3,4,5,6,7,8,9};
     int n = 10;
 
@@ -25,7 +25,6 @@ int random_number_string(char* buffer, size_t result_size) {
             dataset[j] = dataset[j + 1];
         }
     }
-    buffer[n] = '\0';
     return 0;
 }
 
@@ -52,6 +51,7 @@ int init_directory(const char** dir_path) {
 
 int populate_source(const char** dir_path, const char* source_file_names[], int* file_names_length) {
     int is_ok = EXIT_SUCCESS;
+    srand(time(NULL));
     for (int i = 0; i < *file_names_length; i++) {
         time_t t = time(NULL);
         struct tm tm_info;
@@ -75,13 +75,10 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
             continue;
         }
 
-        srand(time(NULL));
-        char random_number[11];
-        random_number_string(random_number, sizeof(random_number));
-        char random_number_buffer[12];
-        size_t random_number_length = strlen(random_number_buffer) + strlen(newline);
-        snprintf(random_number_buffer, random_number_length, "%s\n", random_number);
-        fputs(random_number_buffer, fp);
+        char random_number[10];
+        random_number_string(random_number);
+        fwrite(random_number, 1, 10, fp);
+        putchar('\n');
         rewind(fp);
 
         int c;
