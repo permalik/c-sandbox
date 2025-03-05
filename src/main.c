@@ -57,7 +57,7 @@ int init_directory(const char** dir_path) {
         if (errno == ENOENT) {
             mkdir(*dir_path, 0755);
         } else {
-            perror("Failed to stat.\n");
+            perror("Failed to stat directory.\n");
             return 0;
         }
     }
@@ -78,7 +78,7 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
         snprintf(file_path, path_length, "%s/%s", *dir_path, source_file_names[i]);
         FILE* fp = fopen(file_path, "w+");
         if (!fp) {
-            perror("File opening failed.\n");
+            perror("Error: File opening failed.\n");
             is_ok = EXIT_FAILURE;
             continue;
         }
@@ -110,18 +110,33 @@ int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
     }
     srand(time(NULL));
     while ((entry = readdir(dir)) != NULL) {
-        size_t path_length = strlen(*source_dir_path) + strlen(entry->d_name);
-        char* file_name = malloc(path_length);
-        snprintf(file_name, 15, "%s/%s", *source_dir_path, entry->d_name);
-        printf("%s\n", file_name);
+        size_t path_length = strlen(*source_dir_path) + strlen(entry->d_name) + 2;
+        char* file_path = malloc(path_length);
+        snprintf(file_path , path_length, "%s/%s", *source_dir_path, entry->d_name);
+        printf("%s\n", file_path);
+        // TODO: stat and assert files are non-empty
+        struct stat s;
+        if (stat(file_path, &s) == 0) {
+            if (S_ISREG(s.st_mode)) {
+                printf("is reg file\n");
+            } else {
+                printf("Path exists but is not regular file.\n");
+            }
+        } else {
+            if (errno == ENOENT) {
+                perror("Error: File does not exist.\n");
+            } else {
+                perror("Error: Failed to stat file.\n");
+            }
+        }
     }
+
     time_t t = time(NULL);
     struct tm tm_info;
     localtime_r(&t, &tm_info);
     char timestamp[13];
     strftime(timestamp, sizeof(timestamp), "%Y%m%d%H%M", &tm_info);
 
-    // TODO: stat and assert files are non-empty
     // TODO: iterate file lines
     // TODO: read line to buffer
     // TODO: add char to array, converting to int
