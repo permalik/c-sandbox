@@ -102,7 +102,7 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
 }
 
 int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
-    // TODO: iterate source files
+    // TODO: is_ok
     struct dirent* entry;
     DIR* dir = opendir(*source_dir_path);
     if (!dir) {
@@ -114,17 +114,33 @@ int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
         size_t path_length = strlen(*source_dir_path) + strlen(entry->d_name) + 2;
         char* file_path = malloc(path_length);
         snprintf(file_path , path_length, "%s/%s", *source_dir_path, entry->d_name);
-        printf("%s\n", file_path);
 
         struct stat s;
         if (stat(file_path, &s) == 0) {
             if (S_ISREG(s.st_mode)) {
-                printf("is reg file\n");
+                int c;
+                FILE* fp = fopen(file_path, "r");
+                while((c = fgetc(fp)) != EOF) {
+                    if (c == '\n') {
+                        continue;
+                    }
+                    putchar(c);
+                }
+
+                if (ferror(fp)) {
+                    puts("I/O error while reading.");
+                } else if (feof(fp)) {
+                    puts("Successfully read to EOF.");
+                }
+
+                fclose(fp);
+                free(file_path);
+                continue;
             } else if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
                 printf("Skipping . and .. directories.\n");
                 free(file_path);
                 continue;
-            }else {
+            } else {
                 printf("Path exists but is not regular file.\n");
                 free(file_path);
                 return 1;
@@ -140,6 +156,7 @@ int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
                 return 1;
             }
         }
+        free(file_path);
     }
 
     time_t t = time(NULL);
