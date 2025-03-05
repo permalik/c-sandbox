@@ -46,22 +46,22 @@ int init_directory(const char** dir_path) {
         if (S_ISDIR(s.st_mode)) {
             if (rimraf(*dir_path) != 0) {
                 perror("Error recursively removing directory.\n");
-                return 0;
+                return 1;
             }
             mkdir(*dir_path, 0755);
         } else {
             printf("Path exists but is not directory.\n");
-            return 0;
+            return 1;
         }
     } else {
         if (errno == ENOENT) {
             mkdir(*dir_path, 0755);
         } else {
             perror("Failed to stat directory.\n");
-            return 0;
+            return 1;
         }
     }
-    return 1;
+    return 0;
 }
 
 int populate_source(const char** dir_path, const char* source_file_names[], int* file_names_length) {
@@ -96,6 +96,7 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
 
     if (is_ok == EXIT_FAILURE) {
         fprintf(stderr, "Memory allocations failed.\n");
+        return 1;
     }
     return 0;
 }
@@ -114,19 +115,29 @@ int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
         char* file_path = malloc(path_length);
         snprintf(file_path , path_length, "%s/%s", *source_dir_path, entry->d_name);
         printf("%s\n", file_path);
-        // TODO: stat and assert files are non-empty
+
         struct stat s;
         if (stat(file_path, &s) == 0) {
             if (S_ISREG(s.st_mode)) {
                 printf("is reg file\n");
-            } else {
+            } else if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
+                printf("Skipping . and .. directories.\n");
+                free(file_path);
+                continue;
+            }else {
                 printf("Path exists but is not regular file.\n");
+                free(file_path);
+                return 1;
             }
         } else {
             if (errno == ENOENT) {
                 perror("Error: File does not exist.\n");
+                free(file_path);
+                return 1;
             } else {
                 perror("Error: Failed to stat file.\n");
+                free(file_path);
+                return 1;
             }
         }
     }
@@ -150,9 +161,9 @@ int main() {
     const char* SOURCEDIRECTORY = "/Users/tymalik/Docs/Git/construct/c_construct/src/data";
     const char* DESTDIRECTORY = "/Users/tymalik/Docs/Git/construct/c_construct/src/dest";
     int is_source_initialized = init_directory(&SOURCEDIRECTORY);
-    assert((is_source_initialized == 1) && "Source must be initialized.");
+    assert((is_source_initialized == 0) && "Source must be initialized.\n");
     int is_dest_initialized = init_directory(&DESTDIRECTORY);
-    assert((is_dest_initialized == 1) && "Dest must be initialized.");
+    assert((is_dest_initialized == 0) && "Dest must be initialized.\n");
 
     const char* filenames[] = {
         "one.txt", "two.txt", "three.txt", "four.txt", "five.txt",
@@ -167,10 +178,13 @@ int main() {
         "forty_six.txt", "forty_seven.txt", "forty_eight.txt", "forty_nine.txt", "fifty.txt"
     };
     int filenames_length = sizeof(filenames) / sizeof(filenames[0]);
-    assert(filenames_length > 0 && "filenames cannot be empty");
+    assert(filenames_length > 0 && "Filenames cannot be empty.\n");
 
-    populate_source(&SOURCEDIRECTORY, filenames, &filenames_length);
-    sort_numbers(&SOURCEDIRECTORY, &DESTDIRECTORY);
+    int is_populate_configured = populate_source(&SOURCEDIRECTORY, filenames, &filenames_length);
+    assert((is_populate_configured == 0) && "Population assets must be configured.\n");
+
+    int is_sort_configured = sort_numbers(&SOURCEDIRECTORY, &DESTDIRECTORY);
+    assert((is_sort_configured == 0) && "Source assets must be configured.\n");
 
     return 0;
 }
