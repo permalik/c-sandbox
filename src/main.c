@@ -119,13 +119,22 @@ int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
         if (stat(file_path, &s) == 0) {
             if (S_ISREG(s.st_mode)) {
                 int c;
+                char str[11] = "";
+                int offset = 0;
                 FILE* fp = fopen(file_path, "r");
-                while((c = fgetc(fp)) != EOF) {
+                while ((c = fgetc(fp)) != EOF) {
                     if (c == '\n') {
                         continue;
                     }
-                    putchar(c);
+
+                    if (offset < 10) {
+                        str[offset++] = c;
+                    }
+                    // offset += snprintf(str + offset, sizeof(str) - offset, "%d", c);
                 }
+                str[offset] = '\0';
+                puts(str);
+                offset = 0;
 
                 if (ferror(fp)) {
                     puts("I/O error while reading.");
