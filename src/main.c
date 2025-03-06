@@ -118,23 +118,48 @@ int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
         struct stat s;
         if (stat(file_path, &s) == 0) {
             if (S_ISREG(s.st_mode)) {
+                // int c;
+                // char str[11] = "";
+                // int offset = 0;
+                // FILE* fp = fopen(file_path, "r");
+                // while ((c = fgetc(fp)) != EOF) {
+                //     if (c == '\n') {
+                //         continue;
+                //     }
+
+                //     if (offset < 10) {
+                //         str[offset++] = c;
+                //     }
+                // }
+                // str[offset] = '\0';
+                // puts(str);
+                // offset = 0;
                 int c;
-                char str[11] = "";
-                int offset = 0;
+                char chars[10];
                 FILE* fp = fopen(file_path, "r");
+                int counter = 0;
                 while ((c = fgetc(fp)) != EOF) {
                     if (c == '\n') {
                         continue;
                     }
-
-                    if (offset < 10) {
-                        str[offset++] = c;
+                    chars[counter] = c;
+                    counter++;
+                    if (counter == 10) {
+                        for (int i = 1; i < 10; i++) {
+                            int key = chars[i];
+                            int j = i - 1;
+                            while (j >= 0 && chars[j] > key) {
+                                chars[j + 1] = chars[j];
+                                j--;
+                            }
+                            chars[j + 1] = key;
+                        }
+                        for (int j = 0; j < 10; j++) {
+                            printf("%c\n", chars[j]);
+                        }
+                        counter = 0;
                     }
-                    // offset += snprintf(str + offset, sizeof(str) - offset, "%d", c);
                 }
-                str[offset] = '\0';
-                puts(str);
-                offset = 0;
 
                 if (ferror(fp)) {
                     puts("I/O error while reading.");
