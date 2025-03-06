@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/dirent.h>
 #include <sys/stat.h>
 #include <sys/syslimits.h>
 #include <time.h>
@@ -103,48 +104,37 @@ int populate_source(const char** dir_path, const char* source_file_names[], int*
 
 int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
     // TODO: is_ok
-    struct dirent* entry;
-    DIR* dir = opendir(*source_dir_path);
-    if (!dir) {
-        perror("Failed opendir.\n");
+    struct dirent* source_entry;
+    DIR* source_dir = opendir(*source_dir_path);
+    if (!source_dir) {
+        perror("Failed open source dir.\n");
+        return 1;
+    }
+    DIR* dest_dir = opendir(*dest_dir_path);
+    if (!dest_dir) {
+        perror("Error: Failed open dest dir.\n");
         return 1;
     }
     srand(time(NULL));
-    while ((entry = readdir(dir)) != NULL) {
-        size_t path_length = strlen(*source_dir_path) + strlen(entry->d_name) + 2;
-        char* file_path = malloc(path_length);
-        snprintf(file_path , path_length, "%s/%s", *source_dir_path, entry->d_name);
+    while ((source_entry = readdir(source_dir)) != NULL) {
+        size_t source_path_length = strlen(*source_dir_path) + strlen(source_entry->d_name) + 2;
+        char* source_file_path = malloc(source_path_length);
+        snprintf(source_file_path , source_path_length, "%s/%s", *source_dir_path, source_entry->d_name);
 
         struct stat s;
-        if (stat(file_path, &s) == 0) {
+        if (stat(source_file_path, &s) == 0) {
             if (S_ISREG(s.st_mode)) {
-                // int c;
-                // char str[11] = "";
-                // int offset = 0;
-                // FILE* fp = fopen(file_path, "r");
-                // while ((c = fgetc(fp)) != EOF) {
-                //     if (c == '\n') {
-                //         continue;
-                //     }
-
-                //     if (offset < 10) {
-                //         str[offset++] = c;
-                //     }
-                // }
-                // str[offset] = '\0';
-                // puts(str);
-                // offset = 0;
                 int c;
-                char chars[10];
-                FILE* fp = fopen(file_path, "r");
-                int counter = 0;
+                char chars[10] = {0};
+                FILE* fp = fopen(source_file_path, "r");
+                int source_char_counter = 0;
                 while ((c = fgetc(fp)) != EOF) {
                     if (c == '\n') {
                         continue;
                     }
-                    chars[counter] = c;
-                    counter++;
-                    if (counter == 10) {
+                    chars[source_char_counter] = c;
+                    source_char_counter++;
+                    if (source_char_counter == 10) {
                         for (int i = 1; i < 10; i++) {
                             int key = chars[i];
                             int j = i - 1;
@@ -154,57 +144,66 @@ int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
                             }
                             chars[j + 1] = key;
                         }
+                        time_t t = time(NULL);
+                        struct tm tm_info;
+                        localtime_r(&t, &tm_info);
+                        char timestamp[13];
+                        strftime(timestamp, sizeof(timestamp), "%Y%m%d%H%M", &tm_info);
+
+                        size_t dest_path_length = strlen(*dest_dir_path) + strlen(timestamp) + strlen(source_entry->d_name) + 3;
+                        char* dest_file_path = malloc(dest_path_length);
+                        snprintf(dest_file_path , dest_path_length, "%s/%s.%s", *dest_dir_path, timestamp, source_entry->d_name);
+                        FILE* dest_fp = fopen(dest_file_path, "w+");
+                        char number_string[11] = {0};
                         for (int j = 0; j < 10; j++) {
-                            printf("%c\n", chars[j]);
+                            number_string[j] = chars[j];
                         }
-                        counter = 0;
+                        fwrite(number_string, 1, 10, dest_fp);
+                        fwrite("\n", 1, 1, dest_fp);
+                        fclose(dest_fp);
+                        free(dest_file_path);
+                        source_char_counter = 0;
                     }
                 }
 
                 if (ferror(fp)) {
                     puts("I/O error while reading.");
                 } else if (feof(fp)) {
-                    puts("Successfully read to EOF.");
+                    // puts("Successfully read to EOF.");
                 }
 
                 fclose(fp);
-                free(file_path);
+                free(source_file_path);
                 continue;
-            } else if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
+            } else if (strcmp(source_entry->d_name, ".") == 0 || strcmp(source_entry->d_name, "..") == 0) {
                 printf("Skipping . and .. directories.\n");
-                free(file_path);
+                free(source_file_path);
                 continue;
             } else {
                 printf("Path exists but is not regular file.\n");
-                free(file_path);
+                free(source_file_path);
+                closedir(dest_dir);
+                closedir(source_dir);
                 return 1;
             }
         } else {
             if (errno == ENOENT) {
                 perror("Error: File does not exist.\n");
-                free(file_path);
+                free(source_file_path);
+                closedir(dest_dir);
+                closedir(source_dir);
                 return 1;
             } else {
                 perror("Error: Failed to stat file.\n");
-                free(file_path);
+                free(source_file_path);
+                closedir(dest_dir);
+                closedir(source_dir);
                 return 1;
             }
         }
-        free(file_path);
+        free(source_file_path);
     }
-
-    time_t t = time(NULL);
-    struct tm tm_info;
-    localtime_r(&t, &tm_info);
-    char timestamp[13];
-    strftime(timestamp, sizeof(timestamp), "%Y%m%d%H%M", &tm_info);
-
-    // TODO: iterate file lines
-    // TODO: read line to buffer
-    // TODO: add char to array, converting to int
-    // TODO: sort array
-    // TODO: convert int arr to chars
-    // TODO: write string from arr to dest file
+    closedir(source_dir);
     return 0;
 }
 
