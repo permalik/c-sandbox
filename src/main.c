@@ -153,7 +153,7 @@ int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
                         size_t dest_path_length = strlen(*dest_dir_path) + strlen(timestamp) + strlen(source_entry->d_name) + 3;
                         char* dest_file_path = malloc(dest_path_length);
                         snprintf(dest_file_path , dest_path_length, "%s/%s.%s", *dest_dir_path, timestamp, source_entry->d_name);
-                        FILE* dest_fp = fopen(dest_file_path, "w+");
+                        FILE* dest_fp = fopen(dest_file_path, "a");
                         char number_string[11] = {0};
                         for (int j = 0; j < 10; j++) {
                             number_string[j] = chars[j];
