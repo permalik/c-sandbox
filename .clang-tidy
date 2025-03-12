@@ -1,0 +1,2 @@
+Checks:          '*, -clang-analyzer-*'  # Enable all checks except analyzer checks
+WarningsAsErrors: '*'
