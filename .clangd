@@ -1,0 +1,4 @@
+CompileFlags:
+  Add:
+    - "-isystem"
+    - "/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/include"

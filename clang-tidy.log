@@ -1,0 +1,413 @@
+[1/2] Processing file /Users/tymalik/Docs/Git/construct/c_construct/build/CMakeFiles/3.31.6/CompilerIdC/CMakeCCompilerId.c.
+5 warnings generated.
+[2/2] Processing file /Users/tymalik/Docs/Git/construct/c_construct/src/main.c.
+7956 warnings generated.
+/Users/tymalik/Docs/Git/construct/c_construct/build/CMakeFiles/3.31.6/CompilerIdC/CMakeCCompilerId.c:455:13: error: variable 'info_compiler' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables,-warnings-as-errors]
+  455 | char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";
+      |             ^
+/Users/tymalik/Docs/Git/construct/c_construct/build/CMakeFiles/3.31.6/CompilerIdC/CMakeCCompilerId.c:825:13: error: variable 'info_platform' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables,-warnings-as-errors]
+  825 | char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";
+      |             ^
+/Users/tymalik/Docs/Git/construct/c_construct/build/CMakeFiles/3.31.6/CompilerIdC/CMakeCCompilerId.c:826:13: error: variable 'info_arch' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables,-warnings-as-errors]
+  826 | char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";
+      |             ^
+/Users/tymalik/Docs/Git/construct/c_construct/build/CMakeFiles/3.31.6/CompilerIdC/CMakeCCompilerId.c:856:13: error: variable 'info_language_standard_default' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables,-warnings-as-errors]
+  856 | const char* info_language_standard_default =
+      |             ^
+/Users/tymalik/Docs/Git/construct/c_construct/build/CMakeFiles/3.31.6/CompilerIdC/CMakeCCompilerId.c:859:13: error: variable 'info_language_extensions_default' is non-const and globally accessible, consider making it const [cppcoreguidelines-avoid-non-const-global-variables,-warnings-as-errors]
+  859 | const char* info_language_extensions_default = "INFO" ":" "extensions_default["
+      |             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:1:1: error: system include assert.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+    1 | #include <assert.h>
+      | ^~~~~~~~~~~~~~~~~~~
+    2 | #include <errno.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:2:1: error: #includes are not sorted properly [llvm-include-order,-warnings-as-errors]
+    2 | #include <errno.h>
+      | ^
+note: this fix will not be applied because it overlaps with another fix
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:2:1: error: system include errno.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+    2 | #include <errno.h>
+      | ^~~~~~~~~~~~~~~~~~
+    3 | #include <dirent.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:3:1: error: system include dirent.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+    3 | #include <dirent.h>
+      | ^~~~~~~~~~~~~~~~~~~
+    4 | #include <ftw.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:4:1: error: system include ftw.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+    4 | #include <ftw.h>
+      | ^~~~~~~~~~~~~~~~
+    5 | #include <stdio.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:5:1: error: system include stdio.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+    5 | #include <stdio.h>
+      | ^~~~~~~~~~~~~~~~~~
+    6 | #include <stdlib.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:6:1: error: system include stdlib.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+    6 | #include <stdlib.h>
+      | ^~~~~~~~~~~~~~~~~~~
+    7 | #include <string.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:7:1: error: system include string.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+    7 | #include <string.h>
+      | ^~~~~~~~~~~~~~~~~~~
+    8 | #include <sys/dirent.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:8:1: error: system include sys/dirent.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+    8 | #include <sys/dirent.h>
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+    9 | #include <sys/stat.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:9:1: error: system include sys/stat.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+    9 | #include <sys/stat.h>
+      | ^~~~~~~~~~~~~~~~~~~~~
+   10 | #include <sys/syslimits.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:10:1: error: system include sys/syslimits.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+   10 | #include <sys/syslimits.h>
+      | ^
+note: this fix will not be applied because it overlaps with another fix
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:10:1: error: included header syslimits.h is not used directly [misc-include-cleaner,-warnings-as-errors]
+note: this fix will not be applied because it overlaps with another fix
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:11:1: error: system include time.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+   11 | #include <time.h>
+      | ^~~~~~~~~~~~~~~~~
+   12 | #include <unistd.h>
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:12:1: error: system include unistd.h not allowed [llvmlibc-restrict-system-libc-headers,-warnings-as-errors]
+   12 | #include <unistd.h>
+      | ^~~~~~~~~~~~~~~~~~~
+   13 | 
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:20:32: error: 5 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+   20 |     int dataset[] = {0,1,2,3,4,5,6,7,8,9};
+      |                                ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:20:34: error: 6 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+   20 |     int dataset[] = {0,1,2,3,4,5,6,7,8,9};
+      |                                  ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:20:36: error: 7 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+   20 |     int dataset[] = {0,1,2,3,4,5,6,7,8,9};
+      |                                    ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:20:38: error: 8 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+   20 |     int dataset[] = {0,1,2,3,4,5,6,7,8,9};
+      |                                      ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:20:40: error: 9 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+   20 |     int dataset[] = {0,1,2,3,4,5,6,7,8,9};
+      |                                        ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:23:21: error: rand() has limited randomness [cert-msc30-c,cert-msc50-cpp,-warnings-as-errors]
+   23 |         int index = rand() % (MAX_STRING_LENGTH - i);
+      |                     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:23:21: error: function is not thread safe [concurrency-mt-unsafe,-warnings-as-errors]
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:24:21: error: narrowing conversion from 'int' to signed type 'char' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions,-warnings-as-errors]
+   24 |         buffer[i] = '0' + dataset[index];
+      |                     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:26:9: error: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops,-warnings-as-errors]
+   26 |         for (int j = index; j < MAX_STRING_LENGTH - i - 1; j++) {
+      |         ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:26:29: error: backward branch (for loop) is ID-dependent due to variable reference to 'j' and may cause performance degradation [altera-id-dependent-backward-branch,-warnings-as-errors]
+   26 |         for (int j = index; j < MAX_STRING_LENGTH - i - 1; j++) {
+      |                             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:26:14: note: inferred assignment of ID-dependent value from ID-dependent variable index
+   26 |         for (int j = index; j < MAX_STRING_LENGTH - i - 1; j++) {
+      |              ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:33:63: error: parameter 'stat_info' is unused [misc-unused-parameters,-warnings-as-errors]
+   33 | int unlink_callback(const char* file_path, const struct stat* stat_info, int typeflag, struct FTW* ftwbuffer) {
+      |                                                               ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:33:100: error: parameter 'ftwbuffer' is unused [misc-unused-parameters,-warnings-as-errors]
+   33 | int unlink_callback(const char* file_path, const struct stat* stat_info, int typeflag, struct FTW* ftwbuffer) {
+      |                                                                                                    ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:41:12: error: function is not thread safe [concurrency-mt-unsafe,-warnings-as-errors]
+   41 |     return nftw(dir_path, unlink_callback, 50, FTW_DEPTH | FTW_PHYS);
+      |            ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:41:44: error: 50 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+   41 |     return nftw(dir_path, unlink_callback, 50, FTW_DEPTH | FTW_PHYS);
+      |                                            ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:69:82: error: pointer parameter 'file_names_length' can be pointer to const [readability-non-const-parameter,-warnings-as-errors]
+   69 | int populate_source(const char** dir_path, const char* source_file_names[], int* file_names_length) {
+      |                                                                                  ^
+      |                                                                             const 
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:75:13: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+   75 |             fprintf(stderr, "Error: Memory allocation failed for %s\n", source_file_names[i]);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:75:13: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:81:15: error: variable name 'fp' is too short, expected at least 3 characters [readability-identifier-length,-warnings-as-errors]
+   81 |         FILE* fp = fopen(file_path, "w+");
+      |               ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:81:37: error: use 'fopen' mode 'e' to set O_CLOEXEC [android-cloexec-fopen,-warnings-as-errors]
+   81 |         FILE* fp = fopen(file_path, "w+");
+      |                                     ^~~~
+      |                                     "w+e"
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:88:9: error: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops,-warnings-as-errors]
+   88 |         for (int j = 0; j < 100; j++) {
+      |         ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:88:29: error: 100 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+   88 |         for (int j = 0; j < 100; j++) {
+      |                             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:89:32: error: 11 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+   89 |             char random_number[11];
+      |                                ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:91:13: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+   91 |             fwrite(random_number, 1, 10, fp);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:91:13: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:91:38: error: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+   91 |             fwrite(random_number, 1, 10, fp);
+      |                                      ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:92:13: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+   92 |             fwrite("\n", 1, 1, fp);
+      |             ^~~~~~~~~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:92:13: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:94:9: error: function 'rewind' has no error detection; 'fseek' should be used instead [bugprone-unsafe-functions,cert-msc24-c,cert-msc33-c,-warnings-as-errors]
+   94 |         rewind(fp);
+      |         ^~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:95:9: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+   95 |         fclose(fp);
+      |         ^~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:95:9: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:100:9: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+  100 |         fprintf(stderr, "Memory allocations failed.\n");
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:100:9: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:106:5: error: function 'sort_numbers' has cognitive complexity of 63 (threshold 25) [readability-function-cognitive-complexity,-warnings-as-errors]
+  106 | int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
+      |     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:110:5: note: +1, including nesting penalty of 0, nesting level increased to 1
+  110 |     if (!source_dir) {
+      |     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:115:5: note: +1, including nesting penalty of 0, nesting level increased to 1
+  115 |     if (!dest_dir) {
+      |     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:120:5: note: +1, including nesting penalty of 0, nesting level increased to 1
+  120 |     while ((source_entry = readdir(source_dir)) != NULL) {
+      |     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:123:9: note: +2, including nesting penalty of 1, nesting level increased to 2
+  123 |         snprintf(source_file_path , source_path_length, "%s/%s", *source_dir_path, source_entry->d_name);
+      |         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/include/secure/_stdio.h:57:42: note: expanded from macro 'snprintf'
+   57 |   __builtin___snprintf_chk (str, len, 0, __darwin_obsz(str), __VA_ARGS__)
+      |                                          ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/include/secure/_common.h:41:85: note: expanded from macro '__darwin_obsz'
+   41 | #define __darwin_obsz(object) __builtin_object_size (object, _USE_FORTIFY_LEVEL > 1 ? 1 : 0)
+      |                                                                                     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:126:9: note: +2, including nesting penalty of 1, nesting level increased to 2
+  126 |         if (stat(source_file_path, &s) == 0) {
+      |         ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:127:13: note: +3, including nesting penalty of 2, nesting level increased to 3
+  127 |             if (S_ISREG(s.st_mode)) {
+      |             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:132:17: note: +4, including nesting penalty of 3, nesting level increased to 4
+  132 |                 while ((c = fgetc(fp)) != EOF) {
+      |                 ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:133:21: note: +5, including nesting penalty of 4, nesting level increased to 5
+  133 |                     if (c == '\n') {
+      |                     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:138:21: note: +5, including nesting penalty of 4, nesting level increased to 5
+  138 |                     if (source_char_counter == 10) {
+      |                     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:139:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+  139 |                         for (int i = 1; i < 10; i++) {
+      |                         ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:142:29: note: +7, including nesting penalty of 6, nesting level increased to 7
+  142 |                             while (j >= 0 && chars[j] > key) {
+      |                             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:142:43: note: +1
+  142 |                             while (j >= 0 && chars[j] > key) {
+      |                                           ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:156:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+  156 |                         snprintf(dest_file_path , dest_path_length, "%s/%s.%s", *dest_dir_path, timestamp, source_entry->d_name);
+      |                         ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/include/secure/_stdio.h:57:42: note: expanded from macro 'snprintf'
+   57 |   __builtin___snprintf_chk (str, len, 0, __darwin_obsz(str), __VA_ARGS__)
+      |                                          ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/include/secure/_common.h:41:85: note: expanded from macro '__darwin_obsz'
+   41 | #define __darwin_obsz(object) __builtin_object_size (object, _USE_FORTIFY_LEVEL > 1 ? 1 : 0)
+      |                                                                                     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:159:25: note: +6, including nesting penalty of 5, nesting level increased to 6
+  159 |                         for (int j = 0; j < 10; j++) {
+      |                         ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:170:17: note: +4, including nesting penalty of 3, nesting level increased to 4
+  170 |                 if (ferror(fp)) {
+      |                 ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:172:24: note: +1, nesting level increased to 4
+  172 |                 } else if (feof(fp)) {
+      |                        ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:179:20: note: +1, nesting level increased to 3
+  179 |             } else if (strcmp(source_entry->d_name, ".") == 0 || strcmp(source_entry->d_name, "..") == 0) {
+      |                    ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:179:63: note: +1
+  179 |             } else if (strcmp(source_entry->d_name, ".") == 0 || strcmp(source_entry->d_name, "..") == 0) {
+      |                                                               ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:183:15: note: +1, nesting level increased to 3
+  183 |             } else {
+      |               ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:190:11: note: +1, nesting level increased to 2
+  190 |         } else {
+      |           ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:191:13: note: +3, including nesting penalty of 2, nesting level increased to 3
+  191 |             if (errno == ENOENT) {
+      |             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:197:15: note: +1, nesting level increased to 3
+  197 |             } else {
+      |               ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:106:18: error: 2 adjacent parameters of 'sort_numbers' of similar type ('const char **') are easily swapped by mistake [bugprone-easily-swappable-parameters,-warnings-as-errors]
+  106 | int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
+      |                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:106:31: note: the first parameter in the range is 'source_dir_path'
+  106 | int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
+      |                               ^~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:106:61: note: the last parameter in the range is 'dest_dir_path'
+  106 | int sort_numbers(const char** source_dir_path, const char** dest_dir_path) {
+      |                                                             ^~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:107:5: error: missing username/bug in TODO [google-readability-todo,-warnings-as-errors]
+  107 |     // TODO: is_ok
+      |     ^~~~~~~~~~~~~~
+      |     // TODO(tymalik): is_ok
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:108:20: error: variable 'source_entry' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+  108 |     struct dirent* source_entry;
+      |                    ^           
+      |                                 = NULL
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:119:5: error: random number generator seeded with a disallowed source of seed value will generate a predictable sequence of values [cert-msc32-c,cert-msc51-cpp,-warnings-as-errors]
+  119 |     srand(time(NULL));
+      |     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:120:12: error: backward branch (while loop) is ID-dependent due to variable reference to 'source_entry' and may cause performance degradation [altera-id-dependent-backward-branch,-warnings-as-errors]
+  120 |     while ((source_entry = readdir(source_dir)) != NULL) {
+      |            ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:108:5: note: inferred assignment of ID-dependent value from ID-dependent variable source_dir
+  108 |     struct dirent* source_entry;
+      |     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:120:28: error: function is not thread safe [concurrency-mt-unsafe,-warnings-as-errors]
+  120 |     while ((source_entry = readdir(source_dir)) != NULL) {
+      |                            ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:125:21: error: variable name 's' is too short, expected at least 3 characters [readability-identifier-length,-warnings-as-errors]
+  125 |         struct stat s;
+      |                     ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:128:21: error: variable 'c' is not initialized [cppcoreguidelines-init-variables,-warnings-as-errors]
+  128 |                 int c;
+      |                     ^
+      |                       = 0
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:128:21: error: variable name 'c' is too short, expected at least 3 characters [readability-identifier-length,-warnings-as-errors]
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:129:28: error: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+  129 |                 char chars[10] = {0};
+      |                            ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:130:23: error: variable name 'fp' is too short, expected at least 3 characters [readability-identifier-length,-warnings-as-errors]
+  130 |                 FILE* fp = fopen(source_file_path, "r");
+      |                       ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:130:52: error: use 'fopen' mode 'e' to set O_CLOEXEC [android-cloexec-fopen,-warnings-as-errors]
+  130 |                 FILE* fp = fopen(source_file_path, "r");
+      |                                                    ^~~
+      |                                                    "re"
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:132:24: error: backward branch (while loop) is ID-dependent due to variable reference to 'c' and may cause performance degradation [altera-id-dependent-backward-branch,-warnings-as-errors]
+  132 |                 while ((c = fgetc(fp)) != EOF) {
+      |                        ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:128:17: note: inferred assignment of ID-dependent value from ID-dependent variable fp
+  128 |                 int c;
+      |                 ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:136:50: error: narrowing conversion from 'int' to signed type 'char' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions,-warnings-as-errors]
+  136 |                     chars[source_char_counter] = c;
+      |                                                  ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:138:48: error: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+  138 |                     if (source_char_counter == 10) {
+      |                                                ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:139:45: error: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+  139 |                         for (int i = 1; i < 10; i++) {
+      |                                             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:140:39: error: 'signed char' to 'int' conversion; consider casting to 'unsigned char' first. [bugprone-signed-char-misuse,cert-str34-c,-warnings-as-errors]
+  140 |                             int key = chars[i];
+      |                                       ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:141:33: error: variable name 'j' is too short, expected at least 3 characters [readability-identifier-length,-warnings-as-errors]
+  141 |                             int j = i - 1;
+      |                                 ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:142:29: error: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops,-warnings-as-errors]
+  142 |                             while (j >= 0 && chars[j] > key) {
+      |                             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:142:36: error: backward branch (while loop) is ID-dependent due to variable reference to 'j' and may cause performance degradation [altera-id-dependent-backward-branch,-warnings-as-errors]
+  142 |                             while (j >= 0 && chars[j] > key) {
+      |                                    ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:141:29: note: inferred assignment of ID-dependent value from ID-dependent 
+  141 |                             int j = i - 1;
+      |                             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:146:44: error: narrowing conversion from 'int' to signed type 'char' is implementation-defined [bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions,-warnings-as-errors]
+  146 |                             chars[j + 1] = key;
+      |                                            ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:148:32: error: variable name 't' is too short, expected at least 3 characters [readability-identifier-length,-warnings-as-errors]
+  148 |                         time_t t = time(NULL);
+      |                                ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:150:25: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+  150 |                         localtime_r(&t, &tm_info);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:150:25: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:150:25: error: no header providing "localtime_r" is directly included [misc-include-cleaner,-warnings-as-errors]
+    1 |                         localtime_r(&t, &tm_info);
+      |                         ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:151:40: error: 13 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+  151 |                         char timestamp[13];
+      |                                        ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:152:25: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+  152 |                         strftime(timestamp, sizeof(timestamp), "%Y%m%d%H%M", &tm_info);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:152:25: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:157:63: error: use 'fopen' mode 'e' to set O_CLOEXEC [android-cloexec-fopen,-warnings-as-errors]
+  157 |                         FILE* dest_fp = fopen(dest_file_path, "a");
+      |                                                               ^~~
+      |                                                               "ae"
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:158:44: error: 11 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+  158 |                         char number_string[11] = {0};
+      |                                            ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:159:25: error: kernel performance could be improved by unrolling this loop with a '#pragma unroll' directive [altera-unroll-loops,-warnings-as-errors]
+  159 |                         for (int j = 0; j < 10; j++) {
+      |                         ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:159:45: error: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+  159 |                         for (int j = 0; j < 10; j++) {
+      |                                             ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:162:25: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+  162 |                         fwrite(number_string, 1, 10, dest_fp);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:162:25: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:162:50: error: 10 is a magic number; consider replacing it with a named constant [cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,-warnings-as-errors]
+  162 |                         fwrite(number_string, 1, 10, dest_fp);
+      |                                                  ^
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:163:25: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+  163 |                         fwrite("\n", 1, 1, dest_fp);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:163:25: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:164:25: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+  164 |                         fclose(dest_fp);
+      |                         ^~~~~~~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:164:25: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:176:17: error: the value returned by this function should not be disregarded; neglecting it may lead to errors [cert-err33-c,-warnings-as-errors]
+  176 |                 fclose(fp);
+      |                 ^~~~~~~~~~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:176:17: note: cast the expression to void to silence this warning
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:179:15: error: do not use 'else' after 'continue' [llvm-else-after-return,readability-else-after-return,-warnings-as-errors]
+  179 |             } else if (strcmp(source_entry->d_name, ".") == 0 || strcmp(source_entry->d_name, "..") == 0) {
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  180 |                 printf("Skipping . and .. directories.\n");
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  181 |                 free(source_file_path);
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~
+  182 |                 continue;
+      |                 ~~~~~~~~~
+  183 |             } else {
+      |             ~~~~~~~~
+  184 |                 printf("Path exists but is not regular file.\n");
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  185 |                 free(source_file_path);
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~
+  186 |                 closedir(dest_dir);
+      |                 ~~~~~~~~~~~~~~~~~~~
+  187 |                 closedir(source_dir);
+      |                 ~~~~~~~~~~~~~~~~~~~~~
+  188 |                 return 1;
+      |                 ~~~~~~~~~
+  189 |             }
+      |             ~
+/Users/tymalik/Docs/Git/construct/c_construct/src/main.c:197:15: error: do not use 'else' after 'return' [llvm-else-after-return,readability-else-after-return,-warnings-as-errors]
+  197 |             } else {
+      |               ^~~~~~
+  198 |                 perror("Error: Failed to stat file.\n");
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  199 |                 free(source_file_path);
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~
+  200 |                 closedir(dest_dir);
+      |                 ~~~~~~~~~~~~~~~~~~~
+  201 |                 closedir(source_dir);
+      |                 ~~~~~~~~~~~~~~~~~~~~~
+  202 |                 return 1;
+      |                 ~~~~~~~~~
+  203 |             }
+      |             ~
+Suppressed 7836 warnings (7836 in non-user code).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+84 warnings treated as errors

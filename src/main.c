@@ -16,14 +16,14 @@ struct Files {
 };
 
 int random_number_string(char* buffer) {
+    const int MAX_STRING_LENGTH = 10;
     int dataset[] = {0,1,2,3,4,5,6,7,8,9};
-    int n = 10;
 
-    for (int i = 0; i < n; i++) {
-        int index = rand() % (n - i);
+    for (int i = 0; i < MAX_STRING_LENGTH; i++) {
+        int index = rand() % (MAX_STRING_LENGTH - i);
         buffer[i] = '0' + dataset[index];
 
-        for (int j = index; j < n - i - 1; j++) {
+        for (int j = index; j < MAX_STRING_LENGTH - i - 1; j++) {
             dataset[j] = dataset[j + 1];
         }
     }
@@ -42,21 +42,22 @@ int rimraf(const char* dir_path) {
 }
 
 int init_directory(const char** dir_path) {
-    struct stat s;
-    if (stat(*dir_path, &s) == 0) {
-        if (S_ISDIR(s.st_mode)) {
+    const int RWXRXRX = 0755;
+    struct stat dir_stat;
+    if (stat(*dir_path, &dir_stat) == 0) {
+        if (S_ISDIR(dir_stat.st_mode)) {
             if (rimraf(*dir_path) != 0) {
                 perror("Error recursively removing directory.\n");
                 return 1;
             }
-            mkdir(*dir_path, 0755);
+            mkdir(*dir_path, RWXRXRX);
         } else {
             printf("Path exists but is not directory.\n");
             return 1;
         }
     } else {
         if (errno == ENOENT) {
-            mkdir(*dir_path, 0755);
+            mkdir(*dir_path, RWXRXRX);
         } else {
             perror("Failed to stat directory.\n");
             return 1;

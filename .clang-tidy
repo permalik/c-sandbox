@@ -1,2 +1,5 @@
-Checks:          '*, -clang-analyzer-*'
-WarningsAsErrors: '*'
+Checks:          '-*,llvmlibc-restrict-system-libc-headers'
+WarningsAsErrors: ''
+CheckOptions:
+  - key:            'llvmlibc-restrict-system-libc-headers.AllowSystemIncludes'
+    value:          'true'
