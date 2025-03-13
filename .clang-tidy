@@ -1,15 +1,41 @@
-Checks:          '*, -clang-analyzer-*'  # Enable all checks except analyzer checks
-WarningsAsErrors: '*'  # Treat all warnings as errors by default
+Checks:          '*,cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,cert-msc30-c,cert-msc50-cpp,concurrency-mt-unsafe,bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions,altera-unroll-loops,altera-id-dependent-backward-branch,misc-unused-parameters,cert-err33-c,readability-non-const-parameter,android-cloexec-fopen,bugprone-unsafe-functions'
+WarningsAsErrors:  'cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers,cert-msc30-c,cert-msc50-cpp,concurrency-mt-unsafe,bugprone-narrowing-conversions,cppcoreguidelines-narrowing-conversions,altera-unroll-loops,altera-id-dependent-backward-branch,misc-unused-parameters,cert-err33-c,readability-non-const-parameter,android-cloexec-fopen,bugprone-unsafe-functions'
 
 CheckOptions:
   - key:            'llvmlibc-restrict-system-libc-headers.AllowSystemIncludes'
     value:          'true'  # Allow system includes, but treat them as warnings
-
   - key:            'llvmlibc-restrict-system-libc-headers'
     value:          'false'  # Allow the system includes check to be applied
-
-CompileFlags:
-  Add:
-    - "-isystem"
-    - "/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/include"
+  - key:            'llvmlibc-restrict-system-libc-headers.Level'
+    value:          'Warning'  # Change this to treat system includes as warnings
+  - key:            'llvm-include-order.IgnoreSystemIncludes'
+    value:          'true'  # Ignore order restrictions for system includes
+  - key:            'cppcoreguidelines-avoid-magic-numbers.Level'
+    value:          'error'
+  - key:            'readability-magic-numbers.Level'
+    value:          'error'
+  - key:            'cert-msc30-c.Level'
+    value:          'error'
+  - key:            'cert-msc50-cpp.Level'
+    value:          'error'
+  - key:            'concurrency-mt-unsafe.Level'
+    value:          'error'
+  - key:            'bugprone-narrowing-conversions.Level'
+    value:          'error'
+  - key:            'cppcoreguidelines-narrowing-conversions.Level'
+    value:          'error'
+  - key:            'altera-unroll-loops.Level'
+    value:          'error'
+  - key:            'altera-id-dependent-backward-branch.Level'
+    value:          'error'
+  - key:            'misc-unused-parameters.Level'
+    value:          'error'
+  - key:            'cert-err33-c.Level'
+    value:          'error'
+  - key:            'readability-non-const-parameter.Level'
+    value:          'error'
+  - key:            'android-cloexec-fopen.Level'
+    value:          'error'
+  - key:            'bugprone-unsafe-functions.Level'
+    value:          'error'
 
