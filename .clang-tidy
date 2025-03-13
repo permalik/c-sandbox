@@ -1,5 +1,9 @@
-Checks:          '-*,llvmlibc-restrict-system-libc-headers'
-WarningsAsErrors: ''
+Checks:          '*, -clang-analyzer-*Checks:          '*, -clang-analyzer-*'  # Enable all checks except analyzer checks
+WarningsAsErrors: '*'  # Treat all warnings as errors by default
+
 CheckOptions:
   - key:            'llvmlibc-restrict-system-libc-headers.AllowSystemIncludes'
-    value:          'true'
+    value:          'true'  # Allow system includes, but treat them as warnings
+
+Checks:          '-*, llvmlibc-restrict-system-libc-headers'  # Disable the default check for system includes
+WarningsAsErrors: 'false'  # Allow warnings, but not treat them as errors
