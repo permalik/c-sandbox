@@ -5,6 +5,11 @@ CheckOptions:
   - key:            'llvmlibc-restrict-system-libc-headers.AllowSystemIncludes'
     value:          'true'  # Allow system includes, but treat them as warnings
 
-CheckOptions:
-  - key:            '-*, llvmlibc-restrict-system-libc-headers'
+  - key:            'llvmlibc-restrict-system-libc-headers'
     value:          'false'  # Allow the system includes check to be applied
+
+CompileFlags:
+  Add:
+    - "-isystem"
+    - "/Library/Developer/CommandLineTools/SDKs/MacOSX15.sdk/usr/include"
+
