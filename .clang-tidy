@@ -1,4 +1,4 @@
-Checks:          '*, -clang-analyzer-*Checks:          '*, -clang-analyzer-*'  # Enable all checks except analyzer checks
+Checks:          '*, -clang-analyzer-*'  # Enable all checks except analyzer checks
 WarningsAsErrors: '*'  # Treat all warnings as errors by default
 
 CheckOptions:
