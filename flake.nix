@@ -1,5 +1,5 @@
 {
-  description = "auto";
+  description = "c_curricula";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
