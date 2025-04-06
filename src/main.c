@@ -10,8 +10,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/stat.h>
+#ifdef __APPLE__
+	#include <sys/stat.h>
+#else
+	#include <stat.h>
+#endif
+#ifdef __APPLE__
 #include <sys/syslimits.h>
+#else
+	#include <syslimits.h>
+#endif
 #include <time.h>
 #include <unistd.h>
 
