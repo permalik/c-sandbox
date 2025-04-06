@@ -1,5 +1,5 @@
 {
-  description = "c_curricula";
+  description = "c_sandbox";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
@@ -25,13 +25,14 @@
             pkgs.gnumake
             pkgs.pkg-config
             pkgs.llvmPackages_19.clang-tools
+            pkgs.pre-commit
             # pkgs.gdb
             # pkgs.valgrind
           ];
 
           shellHook = ''
-            # Custom Prompt
-            export PS1="\n\[\e[1;32m\][devshell](c) \w\n❯ \[\e[0m\]"
+            # Source .bashrc
+            . .bashrc
           '';
         };
       }

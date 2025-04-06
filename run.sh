@@ -2,6 +2,7 @@
 
 if [ -z "$1" ]; then
     echo "Usage: $0 <project_name>"
+    exit 1
 fi
 
 project_name=$1
@@ -17,6 +18,8 @@ if [ -d "$build_dir" ]; then
     cmake ..
     echo "compiling project.."
     cmake --build .
+    echo "adding compile commands.."
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=YES ..
     echo "executing project.."
     ./"${project_name}"
 else
@@ -27,6 +30,8 @@ else
     cmake ..
     echo "compiling project.."
     cmake --build .
+    echo "adding compile commands.."
+    cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=YES ..
     echo "executing project.."
     ./"${project_name}"
 fi

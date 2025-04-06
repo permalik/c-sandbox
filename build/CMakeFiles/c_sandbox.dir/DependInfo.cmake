@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/tymalik/Docs/Git/construct/c_construct/src/main.c" "CMakeFiles/c_construct.dir/src/main.c.o" "gcc" "CMakeFiles/c_construct.dir/src/main.c.o.d"
+  "/Users/tymalik/Docs/Git/sandbox/c_sandbox/src/main.c" "CMakeFiles/c_sandbox.dir/src/main.c.o" "gcc" "CMakeFiles/c_sandbox.dir/src/main.c.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

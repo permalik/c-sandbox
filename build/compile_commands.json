@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/Users/tymalik/Docs/Git/sandbox/c_sandbox/build",
+  "command": "/nix/store/jmz12g4jakxrdpk0yf70nmwx87r4sc8y-clang-wrapper-16.0.6/bin/clang   -std=gnu11 -arch arm64 -isysroot /nix/store/0nipgrv4vavhkcmxi8hwhhp3j5l5wr0y-apple-sdk-11.3/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -g -o CMakeFiles/c_sandbox.dir/src/main.c.o -c /Users/tymalik/Docs/Git/sandbox/c_sandbox/src/main.c",
+  "file": "/Users/tymalik/Docs/Git/sandbox/c_sandbox/src/main.c",
+  "output": "CMakeFiles/c_sandbox.dir/src/main.c.o"
+}
+]
