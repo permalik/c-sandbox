@@ -1,1 +1,0 @@
-/nix/store/jmz12g4jakxrdpk0yf70nmwx87r4sc8y-clang-wrapper-16.0.6/bin/clang  -arch arm64 -isysroot /nix/store/0nipgrv4vavhkcmxi8hwhhp3j5l5wr0y-apple-sdk-11.3/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mmacosx-version-min=11.0 -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/tcl-tk/lib CMakeFiles/c_sandbox.dir/src/main.c.o -o c_sandbox

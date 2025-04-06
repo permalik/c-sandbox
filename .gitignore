@@ -60,5 +60,8 @@ dkms.conf
 # Mac
 .DSStore
 
+# Build
+build/
+
 # Nix Build
 /result
