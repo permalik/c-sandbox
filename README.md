@@ -105,7 +105,8 @@ Continuous Delivery
 -->
 
 ### Nuke
-Follow instructions to purge curricula and launch a somewhat opinionated turnkey ecosystem.  
+Follow instructions to purge curricula and launch a somewhat opinionated turnkey ecosystem.
+
 Initialize purge
 ```sh
 # Make script executable
@@ -131,7 +132,6 @@ Repopulate and Rerun the Build
 ./run.sh
 ```
 
-<!--TODO:-->
 <!--TODO:-->
 
 ## Curricula
