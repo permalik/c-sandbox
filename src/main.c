@@ -1,11 +1,15 @@
 #include <assert.h>
-#include <dirent.h>
+#ifdef __APPLE__
+	#include <dirent.h>
+#else
+	#include <dirent.h>
+	#include <sys/dirent.h>
+#endif
 #include <errno.h>
 #include <ftw.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/dirent.h>
 #include <sys/stat.h>
 #include <sys/syslimits.h>
 #include <time.h>
