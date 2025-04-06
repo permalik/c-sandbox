@@ -16,14 +16,14 @@ echo "Start: C Format and Lint"
 
 echo "Execute: clang-format"
 c_format_all() {
-    alias c-format-all="find . -path ./build -prune -o -name \"*.c\" -print -exec clang-format -i {} +"
+    find . -path ./build -prune -o -name \"*.c\" -print -exec clang-format -i {} +
 }
 
 c_format_all
 
 echo "Execute: clang-tidy"
 c_lint_all() {
-    alias c-lint-all='find src -name "*.c" -exec clang-tidy {} -header-filter=.* -system-headers=false -p build --checks=* \;'
+    find src -name "*.c" -exec clang-tidy {} -header-filter=.* -system-headers=false -p build --checks=* \;
 }
 
 c_lint_all
