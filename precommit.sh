@@ -1,4 +1,5 @@
 #!/bin/bash
+# TODO: Enforce clang-tidy on commit
 
 pre-commit install
 
