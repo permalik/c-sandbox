@@ -1,2 +1,2 @@
-# c_construct
-construct:standard programs written in c
+# c_sandbox
+sandbox:C Programming and Turnkey Ecosystem
