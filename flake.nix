@@ -24,7 +24,7 @@
             inherit (pkgs) clangStdenv;
           in
             clangStdenv.mkDerivation {
-              name = "go_sandbox";
+              name = "c_sandbox";
               src = pkgs.lib.cleanSource ./.;
               # buildInputs = with pkgs; [];
 
