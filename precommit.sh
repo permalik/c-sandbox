@@ -19,7 +19,6 @@ c_format_all() {
     alias c-format-all="find . -path ./build -prune -o -name \"*.c\" -print -exec clang-format -i {} +"
 }
 
-pwd
 c_format_all
 
 echo "Execute: clang-tidy"
@@ -27,7 +26,6 @@ c_lint_all() {
     alias c-lint-all='find src -name "*.c" -exec clang-tidy {} -header-filter=.* -system-headers=false -p build --checks=* \;'
 }
 
-pwd
 c_lint_all
 
 if [ $? -ne 0 ]; then
@@ -36,9 +34,6 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Complete: C Format and Lint"
-
-echo "Change back into .git/hooks"
-pwd
 
 #
 # Pre-Commit
