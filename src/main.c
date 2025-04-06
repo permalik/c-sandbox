@@ -12,11 +12,13 @@
 #include <string.h>
 #ifdef __APPLE__
 	#include <sys/stat.h>
+#else
+	#include <linux/stat.h>
 #endif
 #ifdef __APPLE__
 #include <sys/syslimits.h>
 #else
-	#include <syslimits.h>
+	#include <limits.h>
 #endif
 #include <time.h>
 #include <unistd.h>
