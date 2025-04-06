@@ -12,8 +12,6 @@
 #include <string.h>
 #ifdef __APPLE__
 	#include <sys/stat.h>
-#else
-	#include <stat.h>
 #endif
 #ifdef __APPLE__
 #include <sys/syslimits.h>
