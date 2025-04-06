@@ -1,9 +1,9 @@
 #include <assert.h>
 #ifdef __APPLE__
 	#include <dirent.h>
+	#include <sys/dirent.h>
 #else
 	#include <dirent.h>
-	#include <sys/dirent.h>
 #endif
 #include <errno.h>
 #include <ftw.h>
