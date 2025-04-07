@@ -29,7 +29,7 @@
               # buildInputs = with pkgs; [];
 
               buildPhase = with pkgs; ''
-                clang ./src/main.c -o c_sandbox
+                clang ./src/main.c ./src/fundamentals/fibonacci.c -o c_sandbox
               '';
 
               installPhase = ''

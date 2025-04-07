@@ -10,7 +10,7 @@ set(CMAKE_C_STANDARD_REQUIRED True)
 add_compile_options(-g)
 
 # Specify the source files and header files
-set(SOURCES ./src/main.c)
+set(SOURCES ./src/main.c ./src/fundamentals/fibonacci.c)
 
 # set(HEADERS ./src/header.h )
 
