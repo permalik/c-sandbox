@@ -17,7 +17,7 @@
         src = ./.;
         pkgs = nixpkgs.legacyPackages.${system};
         # buildInputs = with pkgs; [clang-tools];
-        nativeBuildInputs = with pkgs; [clang-tools];
+        nativeBuildInputs = with pkgs; [clang-tools glibc];
       in {
         packages = {
           default = let
@@ -40,7 +40,7 @@
         };
 
         devShells.default = pkgs.mkShell.override {stdenv = pkgs.clangStdenv;} {
-          packages = with pkgs; [pkg-config clang-tools alejandra pre-commit];
+          packages = with pkgs; [pkg-config clang-tools glibc alejandra pre-commit];
           inputsFrom = [self.packages.${system}.default];
           # buildInputs = [
           #   pkgs.alejandra
