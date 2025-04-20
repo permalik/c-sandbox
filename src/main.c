@@ -1,6 +1,6 @@
 #include <stdio.h>
 
 int main() {
-	printf("c_sandbox started..");
+	printf("starting c_sandbox..");
 	return 0;
 }
