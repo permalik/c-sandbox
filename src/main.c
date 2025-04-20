@@ -1,6 +1,6 @@
-#include "fundamentals/fibonacci.h"
+#include <stdio.h>
 
 int main() {
-	fibonacci();
+	printf("c_sandbox started..");
 	return 0;
 }
