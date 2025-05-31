@@ -1,4 +1,4 @@
-# c_sandbox
+# c-sandbox
 sandbox:C Programming and Turnkey Ecosystem
 
 [Environment](#environment)
