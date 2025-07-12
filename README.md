@@ -1,9 +1,7 @@
 # c-sandbox
 sandbox:C Programming and Turnkey Ecosystem
 
-## Environment
 ### Development
-
 Enter Nix shell
 ```sh
 nix develop
