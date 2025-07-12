@@ -8,12 +8,6 @@ sandbox:C Programming and Turnkey Ecosystem
 - [Production](#production)
 - [Nuke](#nuke)
 
-[Curricula](#curricula)
-- [Fundamental](#fundamental)
-- [Construct](#construct)
-- [DataStructure](#datastructure)
-- [Algorithm](#algorithm)
-
 ## Environment
 ### Development
 #### Getting Started
@@ -131,11 +125,3 @@ Repopulate and Rerun the Build
 ```sh
 ./run.sh
 ```
-
-<!--TODO:-->
-
-## Curricula
-### Fundamental
-### Construct
-### DataStructure
-### Algorithm
